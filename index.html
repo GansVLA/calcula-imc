@@ -1,0 +1,84 @@
+<!Doctype html>
+<hmtl>
+<head>
+
+<meta charset=UTF-8>
+<title>CALCULO IMC</title>
+<link rel="stylesheet" type="text/css" href="estilo_imc.css">
+<script>
+function calculoIMC()
+{
+var peso, altura, imc, reco,nombre;
+nombre=document.getElementById("nombre").value
+peso=document.getElementById("peso").value
+altura=document.getElementById("altura").value/100;
+imc=peso/(altura*altura);
+document.getElementById("imc").value=imc.toFixed(3);
+if(imc<=20.5)
+{
+reco=nombre+" usted esta delgado, necesita subir " + (altura*altura*20.5-peso).toFixed(3)+"Kilos";
+}
+else if(imc>25.5)
+{
+reco=nombre+" usted tiene sobre peso, necesita adelgazar "+(peso-altura*altura*25.5).toFixed(3)+"kilos";
+}
+else
+{
+reco=nombre+" usted esta en su peso ideal";
+}
+
+document.getElementById("reco").value=reco;
+}
+
+</script>
+</head>
+<body>
+<hr>
+<img src="imc.png" width="115" height="63"><img src="cbtis.png" width="130" height="49" align="right">
+<hr>
+<form name="imc">
+<fieldset>
+<legend>CALCULO DE IMC</legend>
+INGRESE SU NOMBRE:<br>	
+<input type="text" name="nombre" id="nombre" size="20" maxlength="30">
+<br>
+INGRESE SU PESO(Kg):<br>
+<input type="text" name="peso" id="peso" size="20" maxlength="6">
+<br>
+INGRESE SU ALTURA(cm):<br>
+<input type="text" name="altura" id="altura" size="20" maxlength="6">
+<br>
+
+<input type="button" value="CALCULAR IMC" onClick="calculoIMC()" style="width:160px; height:30px; text-align:center; font-weight:bold; border-radius:3px;">
+<br>
+SU IMC ES:<br>
+<input type="text" name="imc" id="imc" size="20" maxlength="15" style="text-align:center; font-weight:bold; font-family:Arial">
+<br>
+RECOMENDACION:<br>
+<input type="text" name="recomendacion" id="reco" style="width:275px; height:30px; text-align:left; font-weight:bold; font-family:Arial">
+
+</fieldset>
+</form>
+<script type="text/javascript">
+function startTime(){
+today=new Date();
+h=today.getHours();
+m=today.getMinutes();
+s=today.getSeconds();
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('reloj').innerHTML=h+":"+m+":"+s;
+t=setTimeout('startTime()',500);}
+function checkTime(i)
+{if (i<10) {i="0" + i;}return i;}
+window.onload=function(){startTime();}
+</script>
+<div id="reloj"></div>
+<center><img src="gans.png">
+<hr>
+<a href="info.html" name="mas informacion"><img src="icon.png" width="120" height="35"></a>
+<a href="https://www.facebook.com/vla.Gans"><img src="iconfa.png" width="60" height="49" ></a>
+
+
+</body>
+</html>
